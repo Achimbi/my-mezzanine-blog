@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
+{% load pages_tags mezzanine_tags i18n staticfiles %}
+
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
+<meta name="description" content="{% block meta_description %}{% endblock %}">
+<title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}</title>
+<link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
+
+{% ifinstalled mezzanine.blog %}
+<link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "blog_post_feed" "rss" %}">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "blog_post_feed" "atom" %}">
+{% endifinstalled %}
+
+{% compress css %}
+<link rel="stylesheet" href="{% static "assets/bootstrap/css/bootstrap.min.css" %}">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ABeeZee">
+<link rel="stylesheet" href="{% static "assets/fonts/font-awesome.min.css" %}">
+<link rel="stylesheet" href="{% static "assets/css/styles.min.css" %}">
+<link rel="stylesheet" href="{% static "assets/css/mycustomizations.css" %}">
+
+
+{% if LANGUAGE_BIDI %}
+<link rel="stylesheet" href="{% static "css/bootstrap-rtl.css" %}">
+{% endif %}
+{% ifinstalled cartridge.shop %}
+<link rel="stylesheet" href="{% static "css/cartridge.css" %}">
+{% if LANGUAGE_BIDI %}
+<link rel="stylesheet" href="{% static "css/cartridge.rtl.css" %}">
+{% endif %}
+{% endifinstalled %}
+{% block extra_css %}{% endblock %}
+{% endcompress %}
+
+{% compress js %}
+
+<script src="{% static "assets/js/jquery.min.js" %}"></script>
+
+{% block extra_js %}
+
+{% endblock %}
+{% endcompress %}
+
+<!--[if lt IE 9]>
+<script src="{% static "js/html5shiv.js" %}"></script>
+<script src="{% static "js/respond.min.js" %}"></script>
+<![endif]-->
+
+{% block extra_head %}{% endblock %}
+</head>
+
+<body id="{% block body_id %}body{% endblock %}">
+
+
+
+<header class="dh-header-non-rectangular">
+
+    <div class="header__bg"></div>
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div>{% block navbar_title %}
+            {% if settings.SITE_TITLE %}<a class="navbar-brand" href="/">{{ settings.SITE_TITLE }}</a>{% endif %}
+            {% if settings.SITE_TAGLINE %}<p class="navbar-text d-none">{{ settings.SITE_TAGLINE }}</p>{% endif %}
+            {% endblock%}
+            <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button></div>
+            <div
+                class="collapse navbar-collapse" id="navcol-1">
+                {% page_menu "pages/menus/primary.html" %}
+                <script>
+                    var myTitle = document.getElementsByClassName('navbar-brand')[0];
+                    myTitle.innerHTML = 'Solus Christus Online';
+                </script>
+        </div>
+        </div>
+    </nav>
+    <!-- <h1>Lorem ipsum</h1> -->   
+    {% block pageheader %}
+        <div class="container">
+            <div class="col-md-12 dh-header-non-rectangular-container">
+                <h1>Solus Christus</h1>
+                <p>Christ Alone</p> 
+            </div>
+        </div>
+    {% endblock %}
+    </header>
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col shadow">
+                {% block main %}{% endblock %}
+            </div>
+        </div>
+    </div>
+
+<footer>
+<div class="row">
+        <div class="col">
+            <div style="background-color:rgba(58,47,47,0);background-image:url(&quot; {% static "assets/img/footer.png" %}&quot;);background-size:cover;background-repeat:no-repeat;height:366px;">
+                <div class="container">
+                    <p class="text-center" style="margin-top:30px;margin-bottom:15px;"><a style="font-size:35px;margin-right:30px;" href="#"><i class="fa fa-facebook-square" style="color:rgb(0,0,0);margin-right:0px;"></i></a><a style="font-size:35px;margin-right:30px;" href="#"></a><a style="font-size:35px;margin-right:30px;"
+                            href="#"></a><a style="font-size:35px;margin-right:30px;" href="#"></a><a style="font-size:35px;" href="#"><i class="fa fa-google-plus-square" style="color:rgb(0,0,0);"></i></a></p>
+                    <p class="text-center" style="color:rgb(193,184,184);font-family:ABeeZee, sans-serif;margin-bottom:23px;">Solus Christus Blog @ 2020</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+{% block footer_js %}
+{% include "includes/footer_scripts.html" %}
+
+<script src="{% static "assets/bootstrap/js/bootstrap.min.js" %}"></script>
+
+{% include "includes/footer_scripts.html" %}
+{% endblock %}
+
+</body>
+</html>

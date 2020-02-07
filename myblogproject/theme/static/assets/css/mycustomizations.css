@@ -1,0 +1,71 @@
+ div.editable-original p {
+    color: #000;
+    font-weight: 700;
+    opacity: 0.5;
+   /* text-align: center;*/
+}
+
+.floating-label-form-group .help-block {
+    display: none;
+}
+
+form.mezzanine-form input, form.mezzanine-form textarea {
+    width: 50%;
+    height: calc(1.5em + 1rem + 2px);
+    padding: .5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: .3rem;
+    display: block;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+*/
+div.shadow form {
+    padding: 40px 0px 0px;
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+
+div.form-group textarea {
+    width: 100%;
+    min-height: 200px;
+}
+
+#body > div > div > div > p:nth-child(4) {
+    color: black;
+    font-weight:200;
+}
+
+#body > div > div > div > p {
+    color: black;
+    font-weight:200;
+}
+
+#body > div > div > div > div:nth-child(17) > p {
+    color: #212529;
+    font-weight: 700;
+}
+
+div.form-group input {
+    width: 100%;
+}
+
+div.form-group label {
+    font-weight: bold;
+}
+
+div.col form.mezzanine-form {
+    border-bottom-width: 5px;
+    padding-bottom: 5px;
+}

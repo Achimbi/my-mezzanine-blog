@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load mezzanine_tags keyword_tags %}
+
+{% block meta_title %}{{ page.meta_title }}{% endblock %}
+
+{% block meta_keywords %}{% metablock %}
+{% keywords_for page as keywords %}
+{% for keyword in keywords %}
+    {% if not forloop.first %}, {% endif %}
+    {{ keyword }}
+{% endfor %}
+{% endmetablock %}{% endblock %}
+
+{% block meta_description %}{% metablock %}
+{{ page.description }}
+{% endmetablock %}{% endblock %}
+
+{% block title %}
+{% editable page.title %}{{ page.title }}{% endeditable %}
+{% endblock %}
+
+{% block pageheader %}
+   <!--  
+    <div class="header__bg"></div>
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div>{% block navbar_title %}
+            {% if settings.SITE_TITLE %}<a class="navbar-brand" href="/">{{ settings.SITE_TITLE }}</a>{% endif %}
+            {% if settings.SITE_TAGLINE %}<p class="navbar-text d-none">{{ settings.SITE_TAGLINE }}</p>{% endif %}
+            {% endblock%}
+            <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button></div>
+            <div
+                class="collapse navbar-collapse" id="navcol-1">
+                
+        </div>
+        </div>
+    </nav>
+    <h1>Lorem ipsum</h1> -->
+        {% if request.path == '/about/' %}
+        <div class="container">
+            <div class="col-md-12 dh-header-non-rectangular-container">
+                <h1>Solus Christus</h1>
+                
+                    <p>About Us</p>
+                
+            </div>
+        </div>
+        {% elif request.path == '/contact-us/' %}
+            <div class="container">
+                <div class="col-md-12 dh-header-non-rectangular-container">
+                    <h1>Solus Christus</h1>
+                    
+                        <p>Contact Us</p>
+                    
+                </div>
+            </div>
+            {% elif request.path == '/blog/' %}
+            <div class="container">
+                <div class="col-md-12 dh-header-non-rectangular-container">
+                    <h1>Solus Christus</h1>
+                    
+                        <p>Blog</p>
+                    
+                </div>
+            </div>
+        {% endif %}
+    
+{% endblock %}
+
+{% block main %}
+{% endblock %}
